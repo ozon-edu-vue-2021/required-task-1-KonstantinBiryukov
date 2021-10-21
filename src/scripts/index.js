@@ -104,7 +104,8 @@ const renderPictures = function (list) {
         image.src = cropImage(element.download_url, 5);
         image.alt = element.author;
         image.classList.add('preview');
-        fragment.appendChild(clone)
+
+        fragment.appendChild(clone);
     });
 
     container.appendChild(fragment);
@@ -171,9 +172,8 @@ const actionHandler = function (evt) {
  */
 const imageHandler = function (evt) {
     evt.preventDefault();
-    if (evt.target.closest('a')) {
-        getPictureInfo(evt.target.dataset.id);
-    }
+    const a = evt.target.closest('a');
+    if (a) getPictureInfo(a.dataset.id);
 }
 
 action.addEventListener('click', actionHandler);
